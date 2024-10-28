@@ -1,0 +1,15 @@
+name: connection_checker
+description: "Simple check connection (internet) to CloudFlare or Google"
+version: 1.0.1
+homepage: ''
+
+environment:
+  sdk: ^3.5.4
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^5.0.0

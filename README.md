@@ -52,20 +52,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Connection Checker Example'),
-        ),
+        appBar: AppBar(title: Text('Connection Checker Example')),
         body: Center(
           child: FutureBuilder(
             future: ConnectionChecker().isConnected(),
             builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
-              } else if (snapshot.hasData && snapshot.data == true) {
-                return Text('Connected to the internet');
-              } else {
-                return Text('No internet connection');
-              }
+              if (snapshot.connectionState == ConnectionState.waiting) return CircularProgressIndicator();
+              if (snapshot.hasData && snapshot.data == true) return Text('Connected to the internet');
+              return Text('No internet connection');
             },
           ),
         ),

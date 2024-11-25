@@ -9,7 +9,7 @@ Simple check connection (internet) to CloudFlare or Google.
 
 ## Installation
 
-Add this to your package's `pubspec.yaml` file then run `pub get`:
+Add this to your package's `pubspec.yaml` file and then run `pub get`:
 
 ```yaml
 dependencies:

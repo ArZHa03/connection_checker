@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'i_connection_checker.dart';
-
-class ConnectionChecker implements IConnectionChecker {
+class ConnectionChecker {
   static const int _port = 53;
   static const Duration _timeout = Duration(seconds: 10);
   static final List<Map<String, dynamic>> _addressList = List.unmodifiable([
@@ -21,8 +19,7 @@ class ConnectionChecker implements IConnectionChecker {
     }
   }
 
-  @override
-  Future<bool> isConnected() async {
+  static Future<bool> isConnected() async {
     final requests = _addressList.map(_isReachable).toList();
     final lastTryResults = List.unmodifiable(await Future.wait(requests));
     return lastTryResults.any((result) => result['isSuccess'] as bool);

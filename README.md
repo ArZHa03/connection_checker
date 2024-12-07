@@ -14,7 +14,9 @@ Add this to your package's `pubspec.yaml` file and then run `pub get`:
 ```yaml
 dependencies:
   connection_checker: 
-    git: https://github.com/ArZHa03/connection_checker.git
+    git: 
+      url: https://github.com/ArZHa03/connection_checker.git
+      ref: static
 ```
 
 ## Usage
@@ -27,7 +29,7 @@ import 'package:connection_checker/connection_checker.dart';
 
 ```dart
 Future<Map<String, dynamic>> fetchAPI() async {
-  if (await ConnectionChecker().isConnected()) {
+  if (await ConnectionChecker.isConnected()) {
     // get data
     return {'status': 'connected', 'data': 'your data here'};
   } else {
@@ -55,7 +57,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(title: Text('Connection Checker Example')),
         body: Center(
           child: FutureBuilder(
-            future: ConnectionChecker().isConnected(),
+            future: ConnectionChecker.isConnected(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) return CircularProgressIndicator();
               if (snapshot.hasData && snapshot.data == true) return Text('Connected to the internet');

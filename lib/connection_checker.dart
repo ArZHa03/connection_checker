@@ -26,7 +26,7 @@ class ConnectionChecker implements IConnectionChecker {
   Future<bool> isConnected() async {
     final requests = _addressList.map(_isReachable).toList();
     final lastTryResults = List.unmodifiable(await Future.wait(requests));
-    log('ConnectionChecker.isConnected: $lastTryResults');
+    log('Results: $lastTryResults', name: 'ConnectionChecker');
     return lastTryResults.any((result) => result['isSuccess'] as bool);
   }
 }

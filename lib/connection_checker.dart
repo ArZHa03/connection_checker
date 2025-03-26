@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 class ConnectionChecker {
@@ -22,6 +23,7 @@ class ConnectionChecker {
   static Future<bool> isConnected() async {
     final requests = _addressList.map(_isReachable).toList();
     final lastTryResults = List.unmodifiable(await Future.wait(requests));
+    log('Results: $lastTryResults', name: 'ConnectionChecker');
     return lastTryResults.any((result) => result['isSuccess'] as bool);
   }
 }
